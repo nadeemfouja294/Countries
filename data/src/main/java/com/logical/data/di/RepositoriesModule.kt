@@ -2,6 +2,7 @@ package com.logical.data.di
 
 
 import com.logical.data.datasource.remote.ApiService
+import com.logical.data.mappers.CountryItemModelMapper
 import com.logical.data.repository.CountriesRepositoryImp
 import com.logical.domain.repository.CountriesRepository
 import dagger.Module
@@ -16,7 +17,8 @@ import javax.inject.Singleton
  */
 @Module
 @InstallIn(SingletonComponent::class)
-class RepositoriesModule {
+object RepositoriesModule {
+
 
     /**
      * This function provides an instance of [CountriesRepository].
@@ -26,10 +28,11 @@ class RepositoriesModule {
     @Singleton
     @Provides
     fun provideImagesRepositoryImp(
-        apiService: ApiService
+        apiService: ApiService,
+        mapper: CountryItemModelMapper
     ): CountriesRepositoryImp {
         return CountriesRepositoryImp(
-            apiService
+            apiService,mapper
         )
     }
 }

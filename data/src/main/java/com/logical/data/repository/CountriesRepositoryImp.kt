@@ -1,6 +1,7 @@
 package com.logical.data.repository
 
 import com.logical.data.datasource.remote.ApiService
+import com.logical.data.mappers.CountryItemModelMapper
 import com.logical.data.model.CountryItemApiModel
 import com.logical.domain.model.CountryItemModel
 import com.logical.domain.repository.CountriesRepository
@@ -13,7 +14,8 @@ import javax.inject.Inject
  * @property apiService The service to fetch data from the API.
  */
 class CountriesRepositoryImp @Inject constructor(
-    private val apiService: ApiService
+    private val apiService: ApiService,
+    private val mapper: CountryItemModelMapper
 ) : CountriesRepository {
 
     /**
@@ -21,7 +23,8 @@ class CountriesRepositoryImp @Inject constructor(
      */
 
     override suspend fun getCountries(): List<CountryItemModel> {
-       return apiService.getCountriesData()
+        val apiModels = apiService.getCountriesData()
+        return mapper.mapFromApiModelList(apiModels)
     }
 
 }
