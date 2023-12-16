@@ -14,7 +14,6 @@ import java.io.IOException
 
 class GetCountriesUseCase(
     private val repository: CountriesRepository,
-    private val resources: Resources
 ) {
 
 
@@ -28,7 +27,8 @@ class GetCountriesUseCase(
             } catch (e: HttpException) {
                 emit(Resource.Error(e.localizedMessage))
             } catch (e: IOException) {
-                emit(Resource.Error(resources.getString(R.string.no_internet_message)))
+                emit(Resource.Error("No internet connection available."))
+
             }
         }
 }

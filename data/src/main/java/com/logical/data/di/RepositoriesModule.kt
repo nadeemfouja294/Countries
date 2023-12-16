@@ -30,7 +30,7 @@ object RepositoriesModule {
     fun provideImagesRepositoryImp(
         apiService: ApiService,
         mapper: CountryItemModelMapper
-    ): CountriesRepositoryImp {
+    ): CountriesRepository {
         return CountriesRepositoryImp(
             apiService,mapper
         )

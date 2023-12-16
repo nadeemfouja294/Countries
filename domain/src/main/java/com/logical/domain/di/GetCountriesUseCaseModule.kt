@@ -20,6 +20,6 @@ class GetCountriesUseCaseModule {
      * It takes [CountriesRepository] and [Resources] as parameters which will be provided by Hilt.
      */
     @Provides
-    fun provideGetCountriesUseCase(countriesRepository: CountriesRepository, resources: Resources)=
-        GetCountriesUseCase(countriesRepository,resources)
+    fun provideGetCountriesUseCase(countriesRepository: CountriesRepository)=
+        GetCountriesUseCase(countriesRepository)
 }
