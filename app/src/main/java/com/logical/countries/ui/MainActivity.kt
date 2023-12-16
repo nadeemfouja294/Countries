@@ -1,3 +1,6 @@
+package com.logical.countries.ui
+
+
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -33,7 +36,7 @@ class MainActivity : AppCompatActivity() {
     private fun setupRecyclerView() {
         binding.countriesRecyclerView.layoutManager = LinearLayoutManager(this)
         countriesAdapter = CountriesAdapter(emptyList()) // Initialize with empty list
-        binding.countriesRecyclerView.adapter = countriesAdapter // Set the adapter
+        binding.countriesRecyclerView.adapter = countriesAdapter
     }
 
     @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
